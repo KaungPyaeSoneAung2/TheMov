@@ -35,4 +35,13 @@ class PopularRepository(private val request: Request) {
                 Log.d("POPULAR", "getPopular: ${result.body()}")
             }
         }
+
+        suspend fun getSearchResult(searchText:String){
+            val result = request.getSearchResult(searchText)
+
+            if(result.body()!=null){
+                animeLiveData.postValue(result.body())
+                Log.d("Search", "getSearchResult: ${result.body()} ")
+            }
+        }
 }

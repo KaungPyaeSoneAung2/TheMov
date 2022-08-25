@@ -12,6 +12,7 @@ class MainViewModel(private val popularRepository: PopularRepository): ViewModel
     init {
         viewModelScope.launch {
             popularRepository.getAnime()
+
         }
     }
     val anime : LiveData<AnimeData>
