@@ -3,7 +3,6 @@ package com.exam.themov.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.exam.themov.SearchText
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.PopularData
@@ -31,4 +30,11 @@ class MainViewModel(private val popularRepository: PopularRepository): ViewModel
     suspend fun getSearchResult(s:String): Response<AnimeData> {
         return popularRepository.getSearchResult(s)
     }
+
+    suspend fun getAnimeByGenre(id:String):Response<AnimeData>{
+        return popularRepository.getAnimeByGenre(id)
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
+
 package com.exam.themov
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
 
-        
+
         val popularRepository = PopularRepository(request)
 
 
@@ -87,60 +88,62 @@ class MainActivity : AppCompatActivity() {
         var searchData = MutableLiveData<AnimeData>()
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                    return true
+                return true
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-               mainViewModel.viewModelScope.launch {
-                   var searchResult = mainViewModel.getSearchResult(p0.toString())
-                   if (searchResult.body()!= null){
-                       searchData.postValue(searchResult.body())
-                       Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-                   }
-                   else{
-                       Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-                   }
-               }
+                mainViewModel.viewModelScope.launch {
+                    var searchResult = mainViewModel.getSearchResult(p0.toString())
+                    if (searchResult.body()!= null){
+                        searchData.postValue(searchResult.body())
+                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
+                        searchData.observe(this@MainActivity){
+                            animeAdapter = AnimeAdapter(it.results)
+                            binding.recPopular.also {
+                                it.setHasFixedSize(true)
 
-                searchData.observe(this@MainActivity){
-                    animeAdapter = AnimeAdapter(it.results)
-                    binding.recPopular.also {
-                        it.setHasFixedSize(true)
-
-                        it.layoutManager =
-                            LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                        it.adapter = animeAdapter
+                                it.layoutManager =
+                                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                                it.adapter = animeAdapter
+                            }
+                        }
+                    }
+                    else{
+                        Toast.makeText(this@MainActivity, "Can't Search", Toast.LENGTH_SHORT).show()
+                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
                     }
                 }
+
+
                 return true
             }
 
 
-            })
+        })
 
 
-        }
+    }
 
 
 
-        private fun getImageSlide() {
-            val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
-            var imgList = ArrayList<SlideModel>()
-            mainViewModel.anime.observe(this) {
-                for (i in 0 until 5) {
-                    imgList.add(
-                        SlideModel(
-                            IMG_BASEURL + it.results.get(i).backdrop_path,
-                            it.results.get(i).name
-                        )
+    private fun getImageSlide() {
+        val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
+        var imgList = ArrayList<SlideModel>()
+        mainViewModel.anime.observe(this) {
+            for (i in 0 until 5) {
+                imgList.add(
+                    SlideModel(
+                        IMG_BASEURL + it.results.get(i).backdrop_path,
+                        it.results.get(i).name
                     )
+                )
 
-                }
-                val imageSlider = findViewById<ImageSlider>(R.id.imageSlider)
-
-                Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 3000)
             }
+            val imageSlider = findViewById<ImageSlider>(R.id.imageSlider)
+
+            Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 3000)
         }
+    }
 
     private fun showSearchResult() {
         mainViewModel.anime.observe(this) {

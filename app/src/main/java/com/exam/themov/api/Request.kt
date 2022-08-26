@@ -16,4 +16,9 @@ interface Request {
 
     @GET("discover/tv?api_key=bbf5a3000e95f1dddf266b5e187d4b21&language=en-US&with_genres=16&with_keywords=210024|287501")
     suspend fun getSearchResult(@Query("with_text_query")searchText : String): Response<AnimeData>
+
+    @GET("discover/tv?api_key=bbf5a3000e95f1dddf266b5e187d4b21&language=en-US&with_keywords=210024|287501")
+    suspend fun getAnimeByGenre(@Query("with_genres") genereId: String) : Response<AnimeData>
+
+
 }

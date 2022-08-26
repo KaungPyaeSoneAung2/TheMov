@@ -28,10 +28,7 @@ class AnimeAdapter(
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): AnimeAdapter.AnimeHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeAdapter.AnimeHolder {
         return AnimeHolder(
             PopularMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         )
