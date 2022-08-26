@@ -92,7 +92,14 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(p0: String?): Boolean {
                mainViewModel.viewModelScope.launch {
-                   searchData.postValue(mainViewModel.getSearchResult(p0.toString()))
+                   var searchResult = mainViewModel.getSearchResult(p0.toString())
+                   if (searchResult.body()!= null){
+                       searchData.postValue(searchResult.body())
+                       Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
+                   }
+                   else{
+                       Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
+                   }
                }
 
                 searchData.observe(this@MainActivity){
