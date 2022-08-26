@@ -28,7 +28,7 @@ class MainViewModel(private val popularRepository: PopularRepository): ViewModel
 
 
 
-    suspend fun getSearchResult(s:String): Response<LiveData<AnimeData>> {
+    suspend fun getSearchResult(s:String): Response<AnimeData> {
         return popularRepository.getSearchResult(s)
     }
 }

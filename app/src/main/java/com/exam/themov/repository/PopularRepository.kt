@@ -40,8 +40,8 @@ class PopularRepository(private val request: Request) {
         }
 
 
-        suspend fun getSearchResult(s:String):Response<LiveData<AnimeData>>{
+        suspend fun getSearchResult(s:String):Response<AnimeData>{
             val search_text = request.getSearchResult(s)
-            return search_text as Response<LiveData<AnimeData>>
+            return search_text
         }
 }
