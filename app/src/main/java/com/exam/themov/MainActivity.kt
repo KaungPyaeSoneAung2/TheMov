@@ -1,10 +1,13 @@
 package com.exam.themov
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,9 +16,12 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.exam.themov.adapter.AnimeAdapter
 import com.exam.themov.adapter.PopularAdapter
+import com.exam.themov.adapter.SearchAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.ActivityMainBinding
+import com.exam.themov.models.Anime.AnimeData
+import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.Result
 import com.exam.themov.repository.PopularRepository
 import com.exam.themov.viewmodels.MainViewModel
@@ -23,13 +29,16 @@ import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import okhttp3.internal.http2.Http2Reader
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var mainViewModel: MainViewModel
     private lateinit var popularAdapter: PopularAdapter
     private lateinit var animeAdapter: AnimeAdapter
-    private val viewModel: MainViewModel = TODO()
+    private lateinit var searchAdapter: SearchAdapter
+    private lateinit var request:Request
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -37,11 +46,9 @@ class MainActivity : AppCompatActivity() {
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
 
+        
         val popularRepository = PopularRepository(request)
 
-        viewModel.anime.observe(this) {
-
-        }
 
 
         mainViewModel = ViewModelProvider(
@@ -58,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 //                it.layoutManager= LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
 //                it.adapter = popularAdapter
 //            }
+
+
         mainViewModel.anime.observe(this) {
             Log.d("POPULAR", it.results.toString())
             Log.d("Search", "onCreate: ${it.results}")
@@ -74,36 +83,38 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-            var searchView = findViewById<SearchView>(R.id.searchView)
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(p0: String?): Boolean {
+        var searchView = findViewById<SearchView>(R.id.searchView)
+        var searchData = MutableLiveData<AnimeData>()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
                     return true
-                }
+            }
 
-                override fun onQueryTextChange(p0: String?): Boolean {
-                    mainViewModel.anime.observe(this@MainActivity) {
-                        animeAdapter = AnimeAdapter(it.results)
-                        binding.recPopular.also {
-                            it.setHasFixedSize(true)
+            override fun onQueryTextChange(p0: String?): Boolean {
+               mainViewModel.viewModelScope.launch {
+                   searchData.postValue(mainViewModel.getSearchResult(p0.toString()))
+               }
 
-                            it.layoutManager = LinearLayoutManager(
-                                this@MainActivity,
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
-                            it.adapter = animeAdapter
-                        }
+                searchData.observe(this@MainActivity){
+                    animeAdapter = AnimeAdapter(it.results)
+                    binding.recPopular.also {
+                        it.setHasFixedSize(true)
 
-                        getImageSlide()
-
+                        it.layoutManager =
+                            LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                        it.adapter = animeAdapter
                     }
-                    return false
                 }
+                return true
+            }
+
+
             })
 
 
         }
+
+
 
         private fun getImageSlide() {
             val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
@@ -123,5 +134,22 @@ class MainActivity : AppCompatActivity() {
                 Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 3000)
             }
         }
+
+    private fun showSearchResult() {
+        mainViewModel.anime.observe(this) {
+            Log.d("POPULAR", it.results.toString())
+            Log.d("Search", "onCreate: ${it.results}")
+            animeAdapter = AnimeAdapter(it.results)
+            binding.recPopular.also {
+                it.setHasFixedSize(true)
+
+                it.layoutManager =
+                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                it.adapter = animeAdapter
+            }
+
+            getImageSlide()
+        }
+    }
 
 }

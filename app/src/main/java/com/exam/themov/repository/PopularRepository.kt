@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.exam.themov.api.Request
 import com.exam.themov.models.Anime.AnimeData
+import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.PopularData
+import retrofit2.Response
 
 class PopularRepository(private val request: Request) {
 
@@ -22,6 +24,7 @@ class PopularRepository(private val request: Request) {
 //            Log.d("POPULAR", "getPopular: ${result.body()}")
 //        }
 //    }
+
     private val animeLiveData = MutableLiveData<AnimeData>()
 
         val anime : LiveData<AnimeData>
@@ -36,12 +39,9 @@ class PopularRepository(private val request: Request) {
             }
         }
 
-        suspend fun getSearchResult(searchText:String){
-            val result = request.getSearchResult(searchText)
 
-            if(result.body()!=null){
-                animeLiveData.postValue(result.body())
-                Log.d("Search", "getSearchResult: ${result.body()} ")
-            }
+        suspend fun getSearchResult(s:String):Response<LiveData<AnimeData>>{
+            val search_text = request.getSearchResult(s)
+            return search_text as Response<LiveData<AnimeData>>
         }
 }

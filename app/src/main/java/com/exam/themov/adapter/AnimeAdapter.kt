@@ -22,10 +22,9 @@ class AnimeAdapter(
             ){
                 crossfade(1000)
                 crossfade(true)
-
             }
-            binding.tvTitle.text=animeList.name.toString()
-            binding.tvLanguage.text=animeList.original_language.toString()
+            binding.tvTitle.text=animeList.name
+            binding.tvLanguage.text=animeList.original_language
         }
     }
 
