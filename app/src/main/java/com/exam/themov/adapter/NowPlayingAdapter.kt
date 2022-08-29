@@ -10,38 +10,36 @@ import com.exam.themov.databinding.AnimeItemBinding
 import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.Result
 
-class AnimeAdapter(
-    val animeList: List<AnimeResult>
-): RecyclerView.Adapter<AnimeAdapter.AnimeHolder>() {
+class NowPlayingAdapter(
+    val popularList: List<Result>
+): RecyclerView.Adapter<NowPlayingAdapter.NowPlayingHolder>() {
 
-    inner class AnimeHolder(private val binding: AnimeItemBinding) :RecyclerView.ViewHolder(binding.root){
-        fun bind(animeList : AnimeResult){
+    inner class NowPlayingHolder(private val binding: AnimeItemBinding) :RecyclerView.ViewHolder(binding.root){
+        fun bind(nowPlayingList : Result){
             val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
             binding.ivMovImg.load(
-                Uri.parse(IMG_BASEURL+animeList.poster_path)
+                Uri.parse(IMG_BASEURL+ nowPlayingList.poster_path)
             ){
                 crossfade(1000)
                 crossfade(true)
+
             }
-            binding.tvTitle.text= animeList.name
+            binding.tvTitle.text= nowPlayingList.title
 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeAdapter.AnimeHolder {
-        return AnimeHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NowPlayingHolder {
+        return NowPlayingHolder(
             AnimeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         )
     }
 
-    override fun onBindViewHolder(holder: AnimeAdapter.AnimeHolder, position: Int) {
-        holder.bind(animeList[position])
-
+    override fun onBindViewHolder(holder: NowPlayingHolder, position: Int) {
+        holder.bind(popularList[position])
     }
 
     override fun getItemCount(): Int {
-        return animeList.size
+        return popularList.size
     }
-
-
 }

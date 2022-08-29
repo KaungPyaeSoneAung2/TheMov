@@ -1,6 +1,5 @@
 package com.exam.themov.fragments
 
-import android.os.Binder
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,21 +10,16 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.exam.themov.R
-import com.exam.themov.adapter.AnimeAdapter
 import com.exam.themov.adapter.GenreAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.FragmentActionBinding
-import com.exam.themov.databinding.GenreItemsBinding
 import com.exam.themov.models.Anime.AnimeData
-import com.exam.themov.repository.PopularRepository
+import com.exam.themov.repository.AnimeRepository
 import com.exam.themov.viewmodels.MainViewModel
 import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 class ActionFragment : Fragment() {
 
@@ -42,7 +36,7 @@ class ActionFragment : Fragment() {
         binding= FragmentActionBinding.inflate(layoutInflater)
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
-        val popularRepository = PopularRepository(request)
+        val popularRepository = AnimeRepository(request)
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(popularRepository)
@@ -78,11 +72,7 @@ class ActionFragment : Fragment() {
 
     }
 
-    private fun getAnimeByGenre() {
-        Toast.makeText(this.context, "Hello", Toast.LENGTH_SHORT).show()
 
-
-    }
 
 
 
