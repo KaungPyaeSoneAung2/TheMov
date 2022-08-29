@@ -35,6 +35,8 @@ class MainViewModel(private val popularRepository: PopularRepository): ViewModel
         return popularRepository.getAnimeByGenre(id)
     }
 
-
+    suspend fun getAnimeByPage(page:Int,genreId:String):Response<AnimeData>{
+        return popularRepository.getAnimeByPage(page,genreId)
+    }
 
 }

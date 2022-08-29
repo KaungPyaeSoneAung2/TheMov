@@ -1,4 +1,4 @@
-package com.exam.themov.fragments.fgadapter
+package com.exam.themov.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

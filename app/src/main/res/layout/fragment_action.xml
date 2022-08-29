@@ -6,25 +6,56 @@
     tools:context=".fragments.ActionFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginTop="60dp"
         android:gravity="center"
-        android:textSize="40sp"
-        android:text="Fragment1"
-        />
+        android:text="Loading"
+        android:textSize="40sp" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAction"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAction"
+            android:paddingBottom="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            tools:listitem="@layout/genre_items"
+            />
+    <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="15dp"
-        android:orientation="vertical"
-        tools:listitem="@layout/genre_items" />
+        android:id="@+id/llPageControl"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
 
+        <ImageView
+            android:clickable="true"
+            android:elevation="2dp"
+            android:src="@drawable/ic_back_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivBackPage"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:elevation="2dp"
+            android:clickable="true"
+            android:src="@drawable/ic_forward_page"
+            android:id="@+id/ivForwardPage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 </FrameLayout>

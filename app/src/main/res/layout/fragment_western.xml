@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ComedyFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".fragments.WesternFragment">
     <TextView
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
@@ -15,14 +13,13 @@
         android:textSize="40dp"
         android:text="Loading" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvComedy"
+        android:id="@+id/rvWestern"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
         tools:listitem="@layout/genre_items" />
-
 
 </FrameLayout>

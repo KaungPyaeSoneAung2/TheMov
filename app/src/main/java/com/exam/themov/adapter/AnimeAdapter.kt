@@ -3,12 +3,12 @@ package com.exam.themov.adapter
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.exam.themov.databinding.PopularMoviesBinding
 import com.exam.themov.models.Anime.AnimeResult
-import com.exam.themov.models.Result
+
 
 class AnimeAdapter(
     val animeList: List<AnimeResult>
@@ -36,6 +36,7 @@ class AnimeAdapter(
 
     override fun onBindViewHolder(holder: AnimeAdapter.AnimeHolder, position: Int) {
         holder.bind(animeList[position])
+
     }
 
     override fun getItemCount(): Int {
