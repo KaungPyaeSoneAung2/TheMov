@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.exam.themov.databinding.PopularMoviesBinding
+import com.exam.themov.databinding.AnimeItemBinding
 import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.Result
 
@@ -14,7 +14,7 @@ class SearchAdapter(
     val searchList: List<AnimeResult>
 ): RecyclerView.Adapter<SearchAdapter.SearchHolder>() {
 
-    inner class SearchHolder(private val binding: PopularMoviesBinding) :RecyclerView.ViewHolder(binding.root){
+    inner class SearchHolder(private val binding: AnimeItemBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(SearchList : AnimeResult){
             val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
             binding.ivMovImg.load(
@@ -24,8 +24,7 @@ class SearchAdapter(
                 crossfade(true)
 
             }
-            binding.tvTitle.text=SearchList.name.toString()
-            binding.tvLanguage.text=SearchList.original_language.toString()
+            binding.tvTitle.text=SearchList.name
         }
     }
 
@@ -34,7 +33,7 @@ class SearchAdapter(
         viewType: Int
     ): SearchAdapter.SearchHolder {
         return SearchHolder(
-            PopularMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            AnimeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         )
     }
 
