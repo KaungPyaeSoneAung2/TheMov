@@ -14,8 +14,8 @@ import com.exam.themov.R
 import com.exam.themov.adapter.GenreAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
-import com.exam.themov.databinding.Fragment4Binding
-import com.exam.themov.databinding.FragmentActionBinding
+import com.exam.themov.databinding.FragmentRomanceBinding
+import com.exam.themov.databinding.FragmentWesternBinding
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.repository.PopularRepository
 import com.exam.themov.viewmodels.MainViewModel
@@ -23,11 +23,12 @@ import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
 
 
-class Fragment4 : Fragment() {
+class WesternFragment : Fragment() {
+
 
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var binding: Fragment4Binding
+    private lateinit var binding: FragmentWesternBinding
 
     var genre = MutableLiveData<AnimeData>()
     override fun onCreateView(
@@ -36,7 +37,7 @@ class Fragment4 : Fragment() {
 
     ): View {
         // Inflate the layout for this fragment
-        binding= Fragment4Binding.inflate(layoutInflater)
+        binding= FragmentWesternBinding.inflate(layoutInflater)
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
         val popularRepository = PopularRepository(request)
@@ -54,14 +55,14 @@ class Fragment4 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
-            val genreData = viewModel.getAnimeByGenre("9648")
+            val genreData = viewModel.getAnimeByGenre("37")
             if (genreData.body() != null) {
                 genre.postValue(genreData.body())
                 Log.d("Genre", "onQueryTextChange: ${genreData.body()}")
                 genre.observe(viewLifecycleOwner) {
                     Log.d("12", "onCreateView: ${it.results}")
                     val genreAdapter = GenreAdapter(it.results)
-                    binding.rvAdventure.apply {
+                    binding.rvWestern.apply {
                         Log.d("RvBind", "onCreateView: ${genreAdapter}")
                         adapter = genreAdapter
                         layoutManager =

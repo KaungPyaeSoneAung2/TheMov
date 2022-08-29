@@ -13,6 +13,46 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="40dp"
-        android:text="Fragment2" />
+        android:text="Loading" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAdventure"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        tools:listitem="@layout/genre_items" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_marginTop="15dp"
+        android:id="@+id/llPageControl"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <ImageView
+            android:clickable="true"
+            android:elevation="2dp"
+            android:src="@drawable/ic_back_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivBackPage"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:elevation="2dp"
+            android:clickable="true"
+            android:src="@drawable/ic_forward_page"
+            android:id="@+id/ivForwardPage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -23,17 +23,25 @@
         app:layout_constraintTop_toBottomOf="@id/tbDetail"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="5dp"
-        android:src="@drawable/img"
+        android:src="@color/purple_500"
         android:layout_height="250dp"/>
-
+<androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/ivBackDrop"
+    app:layout_constraintVertical_bias="0.331"
+    app:cardCornerRadius="20dp">
     <ImageView
         android:id="@+id/ivPoster"
-        app:layout_constraintTop_toBottomOf="@id/tbDetail"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="200dp"
         android:layout_width="120dp"
-        android:layout_height="150dp"/>
-
+        android:layout_height="150dp"
+        android:src="@color/purple_200"
+        style=""/>
+</androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

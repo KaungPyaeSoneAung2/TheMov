@@ -5,10 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.exam.themov.api.Request
 import com.exam.themov.models.Anime.AnimeData
-import com.exam.themov.models.PopularData
 import retrofit2.Response
 
-class AnimeRepository(private val request: Request) {
+class PopularRepository(private val request: Request) {
 
 //    private val popularLiveData = MutableLiveData<PopularData>()
 //
@@ -24,11 +23,8 @@ class AnimeRepository(private val request: Request) {
 //        }
 //    }
     private val animeLiveData = MutableLiveData<AnimeData>()
-    private val topRatedAnime = MutableLiveData<PopularData>()
-    private val nowPlayingAnime = MutableLiveData<PopularData>()
-    private val upcomingAnime = MutableLiveData<PopularData>()
 
-        val popularAnime : LiveData<AnimeData>
+        val anime : LiveData<AnimeData>
             get() = animeLiveData
 
         suspend fun getAnime(){
@@ -40,46 +36,15 @@ class AnimeRepository(private val request: Request) {
             }
         }
 
-    val topRated : LiveData<PopularData>
-    get() = topRatedAnime
-
-    suspend fun getTopRatedAnime(){
-        val result = request.getTopRatedAnime()
-        if(result.body() != null){
-            topRatedAnime.postValue(result.body())
-            Log.d("Top-rated", "getTopRatedAnime: ${result.body()}")
-        }
+    suspend fun getSearchResult(s: String): Response<AnimeData> {
+        return request.getSearchResult(s)
     }
 
-    val nowPlaying : LiveData<PopularData>
-    get() = nowPlayingAnime
-
-    suspend fun getNowPlayingAnime(){
-        val result = request.getNowPlayingAnime()
-        if(result.body()!=null){
-            nowPlayingAnime.postValue(result.body())
-        }
+    suspend fun getAnimeByGenre(id: String): Response<AnimeData> {
+        return request.getAnimeByGenre(id)
     }
 
-    val upcoming : LiveData<PopularData>
-    get() = upcomingAnime
-
-    suspend fun getUpcomingAnime(){
-        val result = request.getUpcomingAnime()
-        if(result.body()!= null){
-            upcomingAnime.postValue(result.body())
-        }
+    suspend fun getAnimeByPage(page:Int,genreId:String) : Response<AnimeData>{
+        return request.getAnimeByPage(page,genreId)
     }
-
-    suspend fun getSearchResult(s:String): Response<AnimeData> {
-        val search_text = request.getSearchResult(s)
-        return search_text
-    }
-
-    suspend fun getAnimeByGenre(id:String) : Response<AnimeData>{
-        val id = request.getAnimeByGenre(id)
-        return id
-    }
-
-
 }
