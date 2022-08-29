@@ -49,7 +49,6 @@ class ActionFragment : Fragment() {
         ).get(MainViewModel::class.java)
 
 
-
         return binding.root
 
     }
