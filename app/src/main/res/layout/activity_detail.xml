@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <Toolbar
+        android:id="@+id/tbDetail"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:backgroundTint="@color/white"
+            android:src="@drawable/arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </Toolbar>
+
+    <ImageView
+        android:id="@+id/ivBackDrop"
+        app:layout_constraintTop_toBottomOf="@id/tbDetail"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:src="@drawable/img"
+        android:layout_height="250dp"/>
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        app:layout_constraintTop_toBottomOf="@id/tbDetail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="200dp"
+        android:layout_width="120dp"
+        android:layout_height="150dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

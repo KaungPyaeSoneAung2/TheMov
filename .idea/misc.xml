@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Exercises Booseter/TheMov - Copy/app/src/main/res/drawable/shadow.xml" value="0.178" />
+        <entry key="..\:/Android Exercises Booseter/TheMov - Copy/app/src/main/res/layout/activity_detail.xml" value="0.152" />
+        <entry key="..\:/Android Exercises Booseter/TheMov - Copy/app/src/main/res/layout/genre_items.xml" value="0.176" />
+        <entry key="..\:/Android Exercises Booseter/TheMov - Copy/app/src/main/res/layout/popular_movies.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/search_background.xml" value="0.1385" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.21784420289855072" />

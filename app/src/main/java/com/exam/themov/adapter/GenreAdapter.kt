@@ -9,6 +9,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.exam.themov.databinding.FragmentActionBinding
 import com.exam.themov.databinding.GenreItemsBinding
+import com.exam.themov.databinding.PopularMoviesBinding
 import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.Result
 
