@@ -2,12 +2,12 @@
 package com.exam.themov
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -17,29 +17,23 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.exam.themov.adapter.AnimeAdapter
+import com.exam.themov.adapter.NowPlayingAdapter
 import com.exam.themov.adapter.PopularAdapter
-import com.exam.themov.adapter.SearchAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.ActivityMainBinding
 import com.exam.themov.models.Anime.AnimeData
-import com.exam.themov.models.Anime.AnimeResult
-import com.exam.themov.models.Result
-import com.exam.themov.repository.PopularRepository
+import com.exam.themov.repository.AnimeRepository
 import com.exam.themov.viewmodels.MainViewModel
 import com.exam.themov.viewmodels.ViewModelFactory
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import okhttp3.internal.http2.Http2Reader
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var mainViewModel: MainViewModel
     private lateinit var popularAdapter: PopularAdapter
+    private lateinit var  nowPlayingAdapter: NowPlayingAdapter
     private lateinit var animeAdapter: AnimeAdapter
-    private lateinit var searchAdapter: SearchAdapter
-    private lateinit var request:Request
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,43 +41,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
+        val popularRepository = AnimeRepository(request)
+        mainViewModel = ViewModelProvider(this, ViewModelFactory(popularRepository)).get(MainViewModel::class.java)
 
+        getImageSlide()
+        getPopularAnime()
+        getTopRatedAnime()
+        getNowPlayingAnime()
+        getUpcoming()
 
-        val popularRepository = PopularRepository(request)
-
-
-
-        mainViewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(popularRepository)
-        ).get(MainViewModel::class.java)
-
-//        mainViewModel.popular.observe(this){
-//            Log.d("POPULAR", it.results.toString())
-//            popularAdapter = PopularAdapter(it.results)
-//            binding.recPopular.also {
-//                it.setHasFixedSize(true)
-//
-//                it.layoutManager= LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-//                it.adapter = popularAdapter
-//            }
-
-
-        mainViewModel.anime.observe(this) {
-            Log.d("POPULAR", it.results.toString())
-            Log.d("Search", "onCreate: ${it.results}")
-            animeAdapter = AnimeAdapter(it.results)
-            binding.recPopular.also {
-                it.setHasFixedSize(true)
-
-                it.layoutManager =
-                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                it.adapter = animeAdapter
-            }
-
-            getImageSlide()
-
-        }
 
         var searchView = findViewById<SearchView>(R.id.searchView)
         var searchData = MutableLiveData<AnimeData>()
@@ -125,12 +91,62 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun getPopularAnime(){
+        mainViewModel.popularAnime.observe(this) {
+            Log.d("POPULAR", it.results.toString())
+            Log.d("Search", "onCreate: ${it.results}")
+            animeAdapter = AnimeAdapter(it.results)
+            binding.recPopular.also {
+                it.setHasFixedSize(true)
 
+                it.layoutManager =
+                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                it.adapter = animeAdapter
+            }
+
+
+        }
+    }
+
+    private fun getTopRatedAnime(){
+        mainViewModel.topRatedAnime.observe(this){
+            popularAdapter = PopularAdapter(it.results)
+            binding.rvTopRated.apply {
+                setHasFixedSize(true)
+
+                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                adapter = popularAdapter
+            }
+        }
+    }
+
+    private fun getNowPlayingAnime(){
+        mainViewModel.nowPlayingAnime.observe(this){
+            nowPlayingAdapter = NowPlayingAdapter(it.results)
+            binding.rvNowPlaying.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                adapter = nowPlayingAdapter
+            }
+        }
+    }
+
+    private fun getUpcoming(){
+        mainViewModel.upcomingAnime.observe(this){
+            popularAdapter = PopularAdapter(it.results)
+            binding.rvUpcoming.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                adapter = popularAdapter
+            }
+        }
+    }
 
     private fun getImageSlide() {
         val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
         var imgList = ArrayList<SlideModel>()
-        mainViewModel.anime.observe(this) {
+
+        mainViewModel.popularAnime.observe(this) {
             for (i in 0 until 5) {
                 imgList.add(
                     SlideModel(
@@ -146,21 +162,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSearchResult() {
-        mainViewModel.anime.observe(this) {
-            Log.d("POPULAR", it.results.toString())
-            Log.d("Search", "onCreate: ${it.results}")
-            animeAdapter = AnimeAdapter(it.results)
-            binding.recPopular.also {
-                it.setHasFixedSize(true)
 
-                it.layoutManager =
-                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                it.adapter = animeAdapter
-            }
-
-            getImageSlide()
-        }
-    }
 
 }
