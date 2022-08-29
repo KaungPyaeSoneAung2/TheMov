@@ -35,7 +35,6 @@ class SortAndFilterActivity : AppCompatActivity() {
         viewPager.adapter=fragmentAdapter
         tabLayout.setupWithViewPager(viewPager)
 
-        binding.tvTotalResult.text=
 
 
         var spinnerAdapter= ArrayAdapter.createFromResource(this,R.array.Sort,android.R.layout.simple_spinner_item)
