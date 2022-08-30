@@ -50,6 +50,7 @@ class WesternFragment : Fragment() {
 
         sortViewModel.sortValue.observe(viewLifecycleOwner){
             sortBy = it.toString()
+            GoNext(currentPage)
         }
 
         return binding.root

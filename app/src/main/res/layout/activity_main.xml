@@ -54,7 +54,7 @@
                 app:iss_corner_radius="5"
                 app:iss_selected_dot="@drawable/default_selected_dot"
                 app:iss_unselected_dot="@drawable/default_unselected_dot"
-                app:iss_period="1000"
+                app:iss_period="3000"
                 tools:ignore="MissingConstraints" />
 
             <TextView
