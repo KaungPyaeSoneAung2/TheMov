@@ -5,11 +5,13 @@
       <map>
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/search_background.xml" value="0.1385" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_detail.xml" value="0.2" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_now_playing_see_more.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_popular_see_more.xml" value="0.2" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_top_rated_see_more.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_up_coming.xml" value="0.21784420289855072" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_action.xml" value="0.21784420289855072" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/genre_items.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/popular_movies.xml" value="0.264" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/slider_items.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/drawable-anydpi/ic_forwadPage.xml" value="0.181" />

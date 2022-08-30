@@ -45,6 +45,7 @@ class ActionFragment : Fragment() {
 
         var id = arguments?.get("spinnerSelected")
         Log.d("Spinner", "onViewCreated: id ${id}")
+
         return binding.root
 
     }
