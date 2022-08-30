@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.models.PopularData
+import com.exam.themov.models.video.VideoData
 import com.exam.themov.repository.AnimeRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -35,7 +36,9 @@ class MainViewModel(private val animeRepository: AnimeRepository): ViewModel() {
     val upComingAnime: LiveData<PopularData>
     get() = animeRepository.upComing
 
-
+    suspend fun  getTrailerById(id:String):Response<VideoData>{
+        return animeRepository.getTrailerById(id)
+    }
     suspend fun getSearchResult(s:String): Response<AnimeData> {
         return animeRepository.getSearchResult(s)
     }
