@@ -71,7 +71,7 @@ dependencies {
     //For image slide
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
-    //material
+    //materialGoogle
     implementation 'com.google.android.material:material:1.6.1'
 
     //justifiedViewDependency
