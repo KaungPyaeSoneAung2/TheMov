@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/blue_theme"
+    tools:context=".MainActivity"
+    >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbSearch"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,11 +21,16 @@
             android:background="@drawable/search_background"
             />
         <ImageView
+            android:id="@+id/ivGenreAndSort"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@color/black"
             android:layout_marginRight="10dp"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:elevation="1dp"
+            android:focusable="true"
+            tools:ignore="RtlHardcoded" />
     </androidx.appcompat.widget.Toolbar>
     <ScrollView
         app:layout_constraintTop_toBottomOf="@id/tbSearch"
@@ -57,9 +64,19 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Popular"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSeemore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="See More"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tvPopular"
+                app:layout_constraintRight_toRightOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recPopular"
@@ -72,7 +89,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvPopular"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
-                tools:listitem="@layout/anime_item" />
+                tools:listitem="@layout/test_activity" />
             <TextView
                 android:id="@+id/tvTopRated"
                 app:layout_constraintTop_toBottomOf="@id/recPopular"
@@ -82,9 +99,20 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Top-rated"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSeemore2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="See More"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tvTopRated"
+                app:layout_constraintRight_toRightOf="parent" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRated"
@@ -97,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvTopRated"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
-                tools:listitem="@layout/anime_item" />
+                tools:listitem="@layout/test_activity" />
 
             <TextView
                 android:id="@+id/tvNowPlaying"
@@ -108,9 +136,21 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Now Playing"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSeemore3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="See More"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tvNowPlaying"
+                app:layout_constraintRight_toRightOf="parent" />
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNowPlaying"
@@ -123,7 +163,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvNowPlaying"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
-                tools:listitem="@layout/anime_item" />
+                tools:listitem="@layout/test_activity" />
 
             <TextView
                 android:id="@+id/tvUpcoming"
@@ -134,9 +174,21 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Upcoming"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSeemore4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="See More"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tvUpcoming"
+                app:layout_constraintRight_toRightOf="parent" />
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUpcoming"
@@ -150,7 +202,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 android:paddingBottom="60dp"
-                tools:listitem="@layout/anime_item" />
+                tools:listitem="@layout/test_activity" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,4 +71,7 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
     implementation 'com.google.android.material:material:1.6.1'
+
+    //justifiedViewDependency
+    implementation 'com.codesgood:justifiedtextview:1.1.0'
 }

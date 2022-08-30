@@ -9,9 +9,12 @@
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/slider_items.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/drawable-anydpi/ic_forwadPage.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/drawable-anydpi/ic_forward_page.xml" value="0.2135" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/activity_detail.xml" value="0.75" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/drawable/shadow.xml" value="0.1625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/activity_detail.xml" value="0.4227441285537701" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/activity_main.xml" value="0.3177083333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/activity_popular_see_more.xml" value="0.2890625" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/anime_item.xml" value="0.2890625" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/fragment_4.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/fragment_5.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/fragment_6.xml" value="0.3536458333333333" />
@@ -23,6 +26,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/genre_items.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/popular_movies.xml" value="0.3177083333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/slider_items.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/test_activity.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2135" />
       </map>
     </option>

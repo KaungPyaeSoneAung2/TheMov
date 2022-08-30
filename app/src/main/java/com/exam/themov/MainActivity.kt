@@ -2,6 +2,7 @@
 package com.exam.themov
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -12,7 +13,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -24,6 +24,7 @@ import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.ActivityMainBinding
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.repository.AnimeRepository
+import com.exam.themov.seemore.PopularSeeMoreActivity
 import com.exam.themov.viewmodels.MainViewModel
 import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -49,7 +50,12 @@ class MainActivity : AppCompatActivity() {
         getTopRatedAnime()
         getNowPlayingAnime()
         getUpcoming()
+        onClick()
 
+        binding.ivGenreAndSort.setOnClickListener {
+            val intent=Intent(this,SortAndFilterActivity::class.java)
+                startActivity(intent)
+        }
 
         var searchView = findViewById<SearchView>(R.id.searchView)
         var searchData = MutableLiveData<AnimeData>()
@@ -92,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getPopularAnime(){
-        mainViewModel.popularAnime.observe(this) {
+        mainViewModel.anime.observe(this) {
             Log.d("POPULAR", it.results.toString())
             Log.d("Search", "onCreate: ${it.results}")
             animeAdapter = AnimeAdapter(it.results)
@@ -132,7 +138,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUpcoming(){
-        mainViewModel.upcomingAnime.observe(this){
+        mainViewModel.upComingAnime.observe(this){
             popularAdapter = PopularAdapter(it.results)
             binding.rvUpcoming.apply {
                 setHasFixedSize(true)
@@ -146,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
         var imgList = ArrayList<SlideModel>()
 
-        mainViewModel.popularAnime.observe(this) {
+        mainViewModel.anime.observe(this) {
             for (i in 0 until 5) {
                 imgList.add(
                     SlideModel(
@@ -161,7 +167,12 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 3000)
         }
     }
-
+    private fun onClick() {
+        binding.tvSeemore.setOnClickListener {
+            var intent = Intent(this@MainActivity, PopularSeeMoreActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
 }

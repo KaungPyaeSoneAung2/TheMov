@@ -10,14 +10,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.exam.themov.R
 import com.exam.themov.adapter.GenreAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.Fragment4Binding
-import com.exam.themov.databinding.FragmentActionBinding
 import com.exam.themov.models.Anime.AnimeData
-import com.exam.themov.repository.PopularRepository
+import com.exam.themov.repository.AnimeRepository
 import com.exam.themov.viewmodels.MainViewModel
 import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -39,7 +37,7 @@ class Fragment4 : Fragment() {
         binding= Fragment4Binding.inflate(layoutInflater)
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
-        val popularRepository = PopularRepository(request)
+        val popularRepository = AnimeRepository(request)
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(popularRepository)

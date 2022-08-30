@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_theme"
+    tools:context=".seemore.PopularSeeMoreActivity">
+
+    <Toolbar
+        android:id="@+id/tbSeemore"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/ibBack"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:backgroundTint="@color/blue_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPopularSM"
+        app:layout_constraintTop_toBottomOf="@id/tbSeemore"
+        android:layout_width="match_parent"
+        android:paddingBottom="30dp"
+        android:layout_height="770dp"
+        tools:listitem="@layout/test_activity"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

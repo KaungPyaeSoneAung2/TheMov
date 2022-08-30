@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_theme"
     tools:context=".DetailActivity">
 
     <Toolbar
@@ -12,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageButton
-            android:backgroundTint="@color/white"
-            android:src="@drawable/arrow_back"
+            android:id="@+id/ibBackArrow"
+            android:backgroundTint="@color/blue_theme"
+            android:src="@drawable/ic_baseline_arrow_back_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </Toolbar>
@@ -22,26 +24,100 @@
         android:id="@+id/ivBackDrop"
         app:layout_constraintTop_toBottomOf="@id/tbDetail"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="5dp"
-        android:src="@color/purple_500"
-        android:layout_height="250dp"/>
-<androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/ivBackDrop"
-    app:layout_constraintVertical_bias="0.331"
-    app:cardCornerRadius="20dp">
+        android:scaleType="centerCrop"
+        android:src="@drawable/back3"
+        android:layout_height="260dp"/>
+
+    <ImageView
+        android:id="@+id/ivBackDropShadow"
+        app:layout_constraintTop_toBottomOf="@id/tbDetail"
+        android:layout_width="match_parent"
+        android:background="@drawable/shadow"
+        android:layout_height="260dp"/>
+
     <ImageView
         android:id="@+id/ivPoster"
+        app:layout_constraintTop_toBottomOf="@id/tbDetail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="200dp"
         android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:src="@color/purple_200"
-        style=""/>
-</androidx.cardview.widget.CardView>
+        android:src="@drawable/img"
+        android:layout_marginLeft="10dp"
+        android:layout_height="150dp"/>
+
+    <TextView
+        android:id="@+id/tvTitleDetail"
+        app:layout_constraintLeft_toRightOf="@id/ivPoster"
+        app:layout_constraintTop_toTopOf="@id/ivPoster"
+        android:text="This is Title"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="7dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginLeft="3dp"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/ivStar"
+        app:layout_constraintTop_toBottomOf="@id/ivBackDrop"
+        app:layout_constraintLeft_toRightOf="@id/ivPoster"
+        android:src="@drawable/ratingstar"
+        android:layout_marginTop="5dp"
+        android:layout_width="25sp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="25sp"
+        />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:text="2.0"
+        app:layout_constraintTop_toTopOf="@id/ivStar"
+        app:layout_constraintLeft_toRightOf="@id/ivStar"
+        app:layout_constraintBottom_toBottomOf="@id/ivStar"
+        android:textSize="14sp"
+        android:layout_marginLeft="5dp"
+
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvPopularity"
+        app:layout_constraintTop_toBottomOf="@id/ivStar"
+        app:layout_constraintLeft_toLeftOf="@id/ivStar"
+        android:text="Popularity"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvP"
+        app:layout_constraintTop_toBottomOf="@id/tvPopularity"
+        app:layout_constraintLeft_toLeftOf="@id/tvPopularity"
+        android:layout_marginTop="5dp"
+        android:text="Action"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/tvDetail"
+        app:layout_constraintTop_toBottomOf="@id/ivPoster"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:text="In Nope (2022), the inspiration for Jupe's hairy alien body for his merchandise is a clear reference to Gordy. The head, however; more subtle and easier to miss. Perhaps Jupe was also traumatized by the cameras or what they represented."
+        android:gravity="start"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
