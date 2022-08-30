@@ -24,13 +24,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:fontFamily="sans-serif-light"
-            android:text="Popular"
+            android:text="Now Playing"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPopularSM"
+        android:id="@+id/rvNowPlayingSM"
         app:layout_constraintTop_toBottomOf="@id/tbSeemore"
         android:layout_width="match_parent"
         android:paddingBottom="30dp"

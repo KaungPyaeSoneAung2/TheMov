@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="See More"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/tvPopular"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -109,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="See More"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/tvTopRated"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -146,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="See More"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/tvNowPlaying"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -184,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="See More"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/tvUpcoming"
                 app:layout_constraintRight_toRightOf="parent" />

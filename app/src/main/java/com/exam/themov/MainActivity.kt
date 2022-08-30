@@ -24,7 +24,10 @@ import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.ActivityMainBinding
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.repository.AnimeRepository
+import com.exam.themov.seemore.NowPlayingSeeMoreActivity
 import com.exam.themov.seemore.PopularSeeMoreActivity
+import com.exam.themov.seemore.TopRatedSeeMoreActivity
+import com.exam.themov.seemore.UpComingActivity
 import com.exam.themov.viewmodels.MainViewModel
 import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -172,6 +175,19 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this@MainActivity, PopularSeeMoreActivity::class.java)
             startActivity(intent)
         }
+        binding.tvSeemore2.setOnClickListener {
+            var intent = Intent(this@MainActivity, TopRatedSeeMoreActivity::class.java)
+            startActivity(intent)
+        }
+        binding.tvSeemore3.setOnClickListener {
+            var intent = Intent(this@MainActivity, NowPlayingSeeMoreActivity::class.java)
+            startActivity(intent)
+        }
+        binding.tvSeemore4.setOnClickListener {
+            var intent = Intent(this@MainActivity, UpComingActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 
