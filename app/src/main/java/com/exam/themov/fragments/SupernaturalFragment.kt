@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exam.themov.adapter.GenreAdapter
 import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
-import com.exam.themov.databinding.FragmentAdventureBinding
+import com.exam.themov.databinding.FragmentSupernaturalBinding
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.repository.AnimeRepository
 import com.exam.themov.viewmodels.MainViewModel
@@ -24,14 +24,15 @@ import com.exam.themov.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
 
 
-class AdventureFragment : Fragment() {
+class SupernaturalFragment : Fragment() {
+
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var binding: FragmentAdventureBinding
-    private val sortViewModel: SortViewModel by activityViewModels()
+    private lateinit var binding: FragmentSupernaturalBinding
+    var sortBy = ""
     var totalPage = 0
     var currentPage = 1
-    var sortBy : String = ""
+    private val sortViewModel: SortViewModel by activityViewModels()
     var genre = MutableLiveData<AnimeData>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,13 +40,15 @@ class AdventureFragment : Fragment() {
 
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentAdventureBinding.inflate(layoutInflater)
+        binding= FragmentSupernaturalBinding.inflate(layoutInflater)
 
         val request = RetrofitHelper.getInstance().create(Request::class.java)
         val popularRepository = AnimeRepository(request)
+
         sortViewModel.sortValue.observe(viewLifecycleOwner){
             sortBy = it.toString()
             GoNext(currentPage)
+
         }
         viewModel = ViewModelProvider(
             this,
@@ -84,7 +87,7 @@ class AdventureFragment : Fragment() {
     }
 
     private fun detectLastItemOfRv() {
-        binding.rvAdventure.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.rvSupernatural.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val layoutManager = LinearLayoutManager::class.java.cast(recyclerView.layoutManager)
                 val totalItemCount = layoutManager.itemCount
@@ -103,7 +106,7 @@ class AdventureFragment : Fragment() {
 
     private fun GoNext(currentPage:Int){
         lifecycleScope.launch {
-            val genreByPage = viewModel.getAnimeByPage(currentPage,"10765")
+            val genreByPage = viewModel.getAnimeByPage(currentPage,"9648")
             if (genreByPage.body() != null) {
                 totalPage = genreByPage.body()!!.total_pages
                 genre.postValue(genreByPage.body())
@@ -111,7 +114,7 @@ class AdventureFragment : Fragment() {
                 genre.observe(viewLifecycleOwner) {
                     Log.d("12", "onCreateView: ${it.results}")
                     val genreAdapter = GenreAdapter(it.results,sortBy)
-                    binding.rvAdventure.apply {
+                    binding.rvSupernatural.apply {
                         Log.d("RvBind", "onCreateView: ${genreAdapter}")
                         adapter = genreAdapter
                         layoutManager =

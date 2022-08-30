@@ -14,8 +14,9 @@ import com.exam.themov.models.Anime.AnimeResult
 
 
 class GenreAdapter(
-    val genreList: List<AnimeResult>
+    val genreList: List<AnimeResult>,var sortList : String
 ): RecyclerView.Adapter<GenreAdapter.GenreHolder>() {
+
 
     inner class GenreHolder(private val binding: GenreItemsBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(genreList : AnimeResult){
@@ -28,7 +29,7 @@ class GenreAdapter(
                 crossfade(true)
 
             }
-            var intent = Intent(this.itemView.context,SortAndFilterActivity::class.java)
+
 
             binding.tvTitle.text = genreList.name
             binding.tvOverview.text = genreList.overview
@@ -46,12 +47,21 @@ class GenreAdapter(
     }
 
     override fun onBindViewHolder(holder: GenreAdapter.GenreHolder, position: Int) {
-        val intent = (holder.itemView.context as Activity).intent
+        var sortedList : List<AnimeResult> = genreList
+        when(sortList){
+            "By Name" -> sortedList = genreList.sortedBy { it.name }
+            "By Rating(Ascending)" -> sortedList = genreList.sortedBy { it.vote_average }
+            "By Rating(Descending)" -> sortedList = genreList.sortedByDescending { it.vote_average }
+            "Popularity(Ascending)" -> sortedList = genreList.sortedBy { it.popularity }
+            "Popularity(Descending)" -> sortedList = genreList.sortedByDescending { it.popularity}
+        }
+
+        holder.bind(sortedList[position])
+
 
 //        val selectedItem = intent.getStringExtra("spinnerSelected").toString()
 //        Log.d("GLGLGL","The result :$selectedItem")
-        var sortedList = genreList.sortedByDescending{ it.vote_average }
-        holder.bind(sortedList[position])
+
     }
 
     override fun getItemCount(): Int {

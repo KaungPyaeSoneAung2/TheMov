@@ -4,14 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/search_background.xml" value="0.1385" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_detail.xml" value="0.2" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_now_playing_see_more.xml" value="0.21784420289855072" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_popular_see_more.xml" value="0.2" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_top_rated_see_more.xml" value="0.21784420289855072" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_up_coming.xml" value="0.21784420289855072" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_action.xml" value="0.21784420289855072" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/genre_items.xml" value="0.21784420289855072" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/popular_movies.xml" value="0.264" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/slider_items.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/drawable-anydpi/ic_forwadPage.xml" value="0.181" />
@@ -35,10 +28,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/slider_items.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/test_activity.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2135" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.15760869565217392" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_7.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_adventure.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_comedy.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_romance.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_supernatural.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_western.xml" value="0.29270833333333335" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
