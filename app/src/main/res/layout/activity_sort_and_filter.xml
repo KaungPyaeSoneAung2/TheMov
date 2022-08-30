@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_theme"
     tools:context=".SortAndFilterActivity">
 
 
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:textColor="@color/white"
             android:text="Total Result:35"/>
         <Spinner
             android:id="@+id/spinnerSort"
@@ -44,6 +46,8 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue_theme"
+        app:tabTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="scrollable">
     </com.google.android.material.tabs.TabLayout>
