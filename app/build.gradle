@@ -58,6 +58,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
 
@@ -75,4 +77,8 @@ dependencies {
 
     //justifiedViewDependency
     implementation 'com.codesgood:justifiedtextview:1.1.0'
+
+    //shareviewmodel access
+    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
 }

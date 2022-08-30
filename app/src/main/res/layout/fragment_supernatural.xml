@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.WesternFragment">
+    tools:context=".fragments.SupernaturalFragment">
     <TextView
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:textSize="40dp"
         android:text="Loading" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWestern"
+        android:id="@+id/rvSupernatural"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"

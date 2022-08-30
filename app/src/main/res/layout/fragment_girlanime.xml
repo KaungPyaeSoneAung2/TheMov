@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Fragment4">
+    tools:context=".fragments.GirlAnimeFragment">
+
     <TextView
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:textSize="40dp"
         android:text="Loading" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAdventure"
+        android:id="@+id/rvGirlAnime"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
@@ -23,21 +24,33 @@
         tools:listitem="@layout/genre_items" />
 
     <LinearLayout
+        android:visibility="gone"
+        android:layout_marginTop="15dp"
         android:id="@+id/llPageControl"
         android:layout_gravity="bottom|center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <ImageView
+            android:clickable="true"
+            android:elevation="2dp"
+            android:src="@drawable/ic_back_page"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:textColor="@color/black" />
-        <Button
-            android:id="@+id/btnFront"
-            android:layout_width="wrap_content"
+            android:id="@+id/ivBackPage"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:elevation="2dp"
+            android:clickable="true"
+            android:src="@drawable/ic_forward_page"
+            android:id="@+id/ivForwardPage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Next"
-            android:textColor="@color/black" />
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"/>
+
     </LinearLayout>
 </FrameLayout>
