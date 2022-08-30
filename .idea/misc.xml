@@ -28,6 +28,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/slider_items.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/layout/test_activity.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMov/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2135" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_detail.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.15760869565217392" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_7.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_adventure.xml" value="0.29270833333333335" />
@@ -35,6 +36,10 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_romance.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_supernatural.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_western.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/genre_items.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/item_trailerimage.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/slider_items.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/test_activity.xml" value="0.29270833333333335" />
       </map>
     </option>
   </component>

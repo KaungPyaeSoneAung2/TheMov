@@ -3,8 +3,10 @@ package com.exam.themov.api
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.models.Anime.AnimeResult
 import com.exam.themov.models.PopularData
+import com.exam.themov.models.video.VideoData
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Request {
@@ -32,5 +34,7 @@ interface Request {
     @GET("discover/tv?api_key=bbf5a3000e95f1dddf266b5e187d4b21&language=en-US&with_keywords=210024|287501")
     suspend fun getAnimeByPage(@Query("page")pageNum : Int,@Query("with_genres") genereId: String) : Response<AnimeData>
 
+    @GET("tv/{tv_id}/videos?api_key=bbf5a3000e95f1dddf266b5e187d4b21")
+    suspend fun getTrailerById(@Path("tv_id") id: String) : Response<VideoData>
 
 }

@@ -39,6 +39,7 @@ class AnimeAdapter(
         holder.bind(animeList[position])
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putExtra("id",animeList[position].id)
             intent.putExtra("movieName",animeList[position].name)
             intent.putExtra("movieBackDrop",animeList[position].backdrop_path)
             intent.putExtra("moviePoster",animeList[position].poster_path)

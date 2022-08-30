@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.exam.themov.api.Request
 import com.exam.themov.models.Anime.AnimeData
 import com.exam.themov.models.PopularData
+import com.exam.themov.models.video.VideoData
 import retrofit2.Response
 
 class AnimeRepository(private val request: Request) {
@@ -39,6 +40,10 @@ class AnimeRepository(private val request: Request) {
                 Log.d("POPULAR", "getPopular: ${result.body()}")
             }
         }
+
+    suspend fun getTrailerById(id : String):Response<VideoData>{
+        return request.getTrailerById(id)
+    }
 
     suspend fun getSearchResult(s: String): Response<AnimeData> {
         return request.getSearchResult(s)
