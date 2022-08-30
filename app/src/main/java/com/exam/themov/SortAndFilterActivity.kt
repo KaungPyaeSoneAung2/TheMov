@@ -38,7 +38,7 @@ class SortAndFilterActivity : AppCompatActivity() ,AdapterView.OnItemSelectedLis
 
 
 
-        var spinnerAdapter= ArrayAdapter.createFromResource(this,R.array.Sort,android.R.layout.simple_list_item_1)
+        var spinnerAdapter= ArrayAdapter.createFromResource(this,R.array.Sort,R.layout.selected_item)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1)
         binding.spinnerSort.adapter=spinnerAdapter
         binding.spinnerSort.onItemSelectedListener=this

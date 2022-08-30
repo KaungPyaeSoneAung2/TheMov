@@ -3,18 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable-anydpi/ic_back_page.xml" value="0.1595" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/arrow_back.xml" value="0.1595" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/arrow_page.xml" value="0.1595" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/drawable/search_background.xml" value="0.1385" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_now_playing_see_more.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_popular_see_more.xml" value="0.2" />
-        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.2" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.264" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_top_rated_see_more.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/activity_up_coming.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/anime_item.xml" value="0.2625" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_action.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_adventure.xml" value="0.2625" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_comedy.xml" value="0.2625" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_fantasy.xml" value="0.2625" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_girlanime.xml" value="0.2625" />
+        <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_supernatural.xml" value="0.2625" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/fragment_western.xml" value="0.2625" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/genre_items.xml" value="0.21784420289855072" />
         <entry key="..\:/Android Exercises Booseter/TheMov/app/src/main/res/layout/popular_movies.xml" value="0.264" />

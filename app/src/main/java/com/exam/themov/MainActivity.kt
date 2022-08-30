@@ -167,7 +167,8 @@ class MainActivity : AppCompatActivity() {
             }
             val imageSlider = findViewById<ImageSlider>(R.id.imageSlider)
 
-            Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 3000)
+
+            Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 2000)
         }
     }
     private fun onClick() {
