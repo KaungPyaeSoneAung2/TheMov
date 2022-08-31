@@ -205,7 +205,9 @@ class MainActivity : AppCompatActivity() {
 
             }
             val imageSlider = findViewById<ImageSlider>(R.id.imageSlider)
-            Handler().postDelayed({imageSlider.setImageList(imgList,ScaleTypes.FIT)},3000)
+            imageSlider.setImageList(imgList,ScaleTypes.FIT)
+            imageSlider.startSliding(3000)
+            imageSlider.setOnClickListener {  }
         }
 
     }
