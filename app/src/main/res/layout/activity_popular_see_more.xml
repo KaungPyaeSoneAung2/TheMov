@@ -10,31 +10,70 @@
     <Toolbar
         android:id="@+id/tbSeemore"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/ibBack"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            android:backgroundTint="@color/blue_theme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tvPopular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Popular"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+        android:layout_height="45dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:backgroundTint="@color/blue_theme"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                >
+                <ImageButton
+                    android:id="@+id/ibPageBack"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_back_page"
+                    android:backgroundTint="@color/blue_theme"
+                    android:visibility="invisible"
+                    android:clickable="false"
+                    />
+                <TextView
+                    android:id="@+id/tvPopular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Popular"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+                <ImageButton
+                    android:id="@+id/ibPageFront"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_forward_page"
+                    android:backgroundTint="@color/blue_theme"
+                    android:clickable="true"
+                    android:visibility="visible"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
     </Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPopularSM"
         app:layout_constraintTop_toBottomOf="@id/tbSeemore"
         android:layout_width="match_parent"
-        android:paddingBottom="30dp"
-        android:layout_height="770dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="47dp"
         tools:listitem="@layout/test_activity"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

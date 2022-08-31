@@ -11,28 +11,39 @@
         android:id="@+id/tbSearch"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:queryHint="Search Movies"
-            android:layout_marginEnd="50dp"
-            android:iconifiedByDefault="false"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/search_background"
-            />
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:src="@drawable/themov"
+            android:layout_width="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="35dp"/>
+        <TextView
+            android:text="TheMov"
+            android:textColor="@color/white"
+            android:layout_marginLeft="25dp"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <ImageView
             android:id="@+id/ivGenreAndSort"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/filter"
             android:layout_marginRight="10dp"
-            android:layout_gravity="right"
             android:clickable="true"
             android:elevation="1dp"
             android:focusable="true"
-            tools:ignore="RtlHardcoded" />
+            android:layout_gravity="right"/>
+        <ImageView
+            android:id="@+id/searchView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_search_24"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="right"/>
+
     </androidx.appcompat.widget.Toolbar>
     <ScrollView
         app:layout_constraintTop_toBottomOf="@id/tbSearch"
@@ -82,7 +93,7 @@
                 app:layout_constraintRight_toRightOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recPopular"
+                android:id="@+id/rvPopular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -95,7 +106,7 @@
                 tools:listitem="@layout/test_activity" />
             <TextView
                 android:id="@+id/tvTopRated"
-                app:layout_constraintTop_toBottomOf="@id/recPopular"
+                app:layout_constraintTop_toBottomOf="@id/rvPopular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

@@ -31,13 +31,20 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/drawable-anydpi/ic_back_page.xml" value="0.309" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/drawable-anydpi/ic_forward_page.xml" value="0.309" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2705" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/drawable/search_background.xml" value="0.1795" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_detail.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_main.xml" value="0.17617753623188406" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_now_playing_see_more.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.15760869565217392" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_popular_see_more.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_search.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_sort_and_filter.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_top_rated_see_more.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/activity_up_coming.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_7.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_adventure.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_comedy.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_fantasy.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_girlanime.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_romance.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_supernatural.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TheMovUpdated/app/src/main/res/layout/fragment_western.xml" value="0.29270833333333335" />

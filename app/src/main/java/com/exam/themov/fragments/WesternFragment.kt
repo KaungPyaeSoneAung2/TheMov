@@ -63,10 +63,10 @@ class WesternFragment : Fragment() {
         GoNext(currentPage)
 
         detectLastItemOfRv()
-        binding.ivBackPage.visibility = View.GONE
+        binding.ivBackPage.visibility = View.INVISIBLE
         // binding.ivBackPage.visibility=View.VISIBLE
         if(currentPage>=totalPage){
-            binding.ivForwardPage.visibility=View.GONE
+            binding.ivForwardPage.visibility=View.INVISIBLE
         }
         else{
         binding.ivForwardPage.setOnClickListener {
@@ -74,13 +74,13 @@ class WesternFragment : Fragment() {
             binding.ivBackPage.visibility = View.VISIBLE
             Log.d("totalPage", "TotalPage : ${totalPage}")
             if (currentPage >= totalPage) {
-                binding.ivForwardPage.visibility = View.GONE
+                binding.ivForwardPage.visibility = View.INVISIBLE
             }
         }}
         binding.ivBackPage.setOnClickListener{
             GoNext(--currentPage)
             if(currentPage <= 1){
-                binding.ivBackPage.visibility = View.GONE
+                binding.ivBackPage.visibility = View.INVISIBLE
             }
         }
 

@@ -1,6 +1,7 @@
 package com.exam.themov.repository
 
 import android.util.Log
+import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.exam.themov.api.Request
@@ -11,35 +12,22 @@ import retrofit2.Response
 
 class AnimeRepository(private val request: Request) {
 
-//    private val popularLiveData = MutableLiveData<PopularData>()
-//
-//    val popular : LiveData<PopularData>
-//        get() = popularLiveData
-//
-//    suspend fun getPopular(){
-//        val result = request.getPopular()
-//
-//        if (result.body()!=null){
-//            popularLiveData.postValue(result.body())
-//            Log.d("POPULAR", "getPopular: ${result.body()}")
-//        }
-//    }
     private val animeLiveData = MutableLiveData<AnimeData>()
-    private val topRatedAnime=MutableLiveData<PopularData>()
-    private val nowPlayingAnime= MutableLiveData<PopularData>()
-    private val upComingAnime =MutableLiveData<PopularData>()
 
-        val anime : LiveData<AnimeData>
-            get() = animeLiveData
+        suspend fun getAnime(id:Int):Response<AnimeData>{
 
-        suspend fun getAnime(){
-            val result = request.getAnime()
-
-            if (result.body()!=null){
-                animeLiveData.postValue(result.body())
-                Log.d("POPULAR", "getPopular: ${result.body()}")
-            }
+                return request.getAnime(id)
         }
+
+    val anime : LiveData<AnimeData>
+    get() = animeLiveData
+
+    suspend fun dataForSlideShow(){
+        val result = request.getAnime(1)
+        if(result.body()!= null){
+            animeLiveData.postValue(result.body())
+        }
+    }
 
     suspend fun getTrailerById(id : String):Response<VideoData>{
         return request.getTrailerById(id)
@@ -61,48 +49,14 @@ class AnimeRepository(private val request: Request) {
         return request.getAnimeByPage(page,genreId)
     }
 
-    val topRated:LiveData<PopularData>
-    get()=topRatedAnime
-
-//    suspend fun getTopRatedAnime(){
-//        val result = request.getTopRatedAnime()
-//
-//        if (result.body()!=null){
-//            topRatedAnime.postValue(result.body())
-//            Log.d("POPULAR", "getPopular: ${result.body()}")
-//        }
-//    }
-
     suspend fun getTopRatedAnime(page:Int):Response<PopularData>{
         return request.getTopRatedAnime(page)
-
-//        val result = request.getNowPlayingAnime(page)
-//
-//        if (result.body()!=null){
-//            nowPlayingAnime.postValue(result.body())
-//            Log.d("POPULAR", "getPopular: ${result.body()}")
-//        }
     }
     suspend fun getNowPlayingAnime(page:Int):Response<PopularData>{
         return request.getNowPlayingAnime(page)
-
-//        val result = request.getNowPlayingAnime(page)
-//
-//        if (result.body()!=null){
-//            nowPlayingAnime.postValue(result.body())
-//            Log.d("POPULAR", "getPopular: ${result.body()}")
-//        }
     }
 
-    val upComing:LiveData<PopularData>
-    get()=upComingAnime
-
-    suspend fun getUpComingAnime(){
-        val result = request.getUpcomingAnime()
-
-        if (result.body()!=null){
-            upComingAnime.postValue(result.body())
-            Log.d("POPULAR", "getPopular: ${result.body()}")
-        }
+    suspend fun getUpComingAnime(page:Int):Response<PopularData>{
+        return request.getUpcomingAnime(page)
     }
 }

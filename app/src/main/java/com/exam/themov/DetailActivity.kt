@@ -108,7 +108,6 @@ class DetailActivity : AppCompatActivity() {
                         adapter = videoAdapter
                     }
                 }
-
             }
         }
 

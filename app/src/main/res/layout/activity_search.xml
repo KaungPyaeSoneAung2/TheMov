@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_theme"
+    tools:context=".SearchActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_marginTop="5dp"
+        android:id="@+id/tbSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/ivBackButton"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:clickable="true"
+            />
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:queryHint="Search Movies"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="50dp"
+            android:iconifiedByDefault="false"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/search_background"
+            />
+        <ImageView
+            android:id="@+id/ivGenreAndSort"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/filter"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:elevation="1dp"
+            android:focusable="true"
+            tools:ignore="RtlHardcoded" />
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Kyite tar :))"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchResult"
+        android:layout_marginTop="57dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/test_activity"
+        android:background="@color/blue_theme"
+        android:visibility="invisible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

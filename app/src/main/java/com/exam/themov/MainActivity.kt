@@ -5,15 +5,10 @@ package com.exam.themov
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -41,8 +36,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var popularAdapter: PopularAdapter
     private lateinit var  nowPlayingAdapter: NowPlayingAdapter
     private lateinit var animeAdapter: AnimeAdapter
+    var popularList = MutableLiveData<AnimeData>()
     var nowPlayingList = MutableLiveData<PopularData>()
     var topRatedList = MutableLiveData<PopularData>()
+    var upComingList = MutableLiveData<PopularData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,60 +62,65 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
         }
 
-        var searchView = findViewById<SearchView>(R.id.searchView)
-        var searchData = MutableLiveData<AnimeData>()
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                return true
-            }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
-                mainViewModel.viewModelScope.launch {
-                    var searchResult = mainViewModel.getSearchResult(p0.toString())
-                    if (searchResult.body()!= null){
-                        searchData.postValue(searchResult.body())
-                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-                        searchData.observe(this@MainActivity){
-                            animeAdapter = AnimeAdapter(it.results)
-                            binding.recPopular.also {
-                                it.setHasFixedSize(true)
-
-                                it.layoutManager =
-                                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                                it.adapter = animeAdapter
-                            }
-                        }
-                    }
-                    else{
-                        Toast.makeText(this@MainActivity, "Can't Search", Toast.LENGTH_SHORT).show()
-                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-                    }
-                }
-
-
-                return true
-            }
-
-
-        })
+        binding.searchView.setOnClickListener{
+            Intent(this, SearchActivity::class.java).also { startActivity(it) }
+        }
+        //var searchView = findViewById<SearchView>(R.id.searchView)
+//        var searchData = MutableLiveData<AnimeData>()
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(p0: String?): Boolean {
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(p0: String?): Boolean {
+//                mainViewModel.viewModelScope.launch {
+//                    var searchResult = mainViewModel.getSearchResult(p0.toString())
+//                    if (searchResult.body()!= null){
+//                        searchData.postValue(searchResult.body())
+//                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
+//                        searchData.observe(this@MainActivity){
+//                            animeAdapter = AnimeAdapter(it.results)
+//                            binding.rvPopular.also {
+//                                it.setHasFixedSize(true)
+//
+//                                it.layoutManager =
+//                                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+//                                it.adapter = animeAdapter
+//                            }
+//                        }
+//                    }
+//                    else{
+//                        Toast.makeText(this@MainActivity, "Can't Search", Toast.LENGTH_SHORT).show()
+//                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
+//                    }
+//                }
+//
+//
+//                return true
+//            }
+//
+//
+//        })
 
 
     }
 
     private fun getPopularAnime(){
-        mainViewModel.anime.observe(this) {
-            Log.d("POPULAR", it.results.toString())
-            Log.d("Search", "onCreate: ${it.results}")
-            animeAdapter = AnimeAdapter(it.results)
-            binding.recPopular.also {
-                it.setHasFixedSize(true)
+        lifecycleScope.launch {
+            val genreByPage = mainViewModel.getAnime(1)
+            if (genreByPage.body() != null) {
+                popularList.postValue(genreByPage.body())
+                popularList.observe(this@MainActivity) {
+                    animeAdapter = AnimeAdapter(it.results)
+                    binding.rvPopular.also {
+                        it.setHasFixedSize(true)
+                        it.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                        it.adapter = animeAdapter
+                    }
 
-                it.layoutManager =
-                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                it.adapter = animeAdapter
+                }
             }
-
-
         }
     }
 
@@ -170,12 +172,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUpcoming(){
-        mainViewModel.upComingAnime.observe(this){
-            popularAdapter = PopularAdapter(it.results)
-            binding.rvUpcoming.apply {
-                setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                adapter = popularAdapter
+
+        lifecycleScope.launch {
+            val genreByPage = mainViewModel.getUpComing(1)
+            if (genreByPage.body() != null) {
+                upComingList.postValue(genreByPage.body())
+                upComingList.observe(this@MainActivity) {
+                    popularAdapter = PopularAdapter(it.results)
+                    binding.rvUpcoming.also {
+                        it.setHasFixedSize(true)
+                        it.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                        it.adapter = popularAdapter
+                    }
+
+                }
             }
         }
     }
@@ -184,8 +194,8 @@ class MainActivity : AppCompatActivity() {
         val IMG_BASEURL = "https://image.tmdb.org/t/p/w500/"
         var imgList = ArrayList<SlideModel>()
 
-        mainViewModel.anime.observe(this) {
-            for (i in 0 until 5) {
+        mainViewModel.anime.observe(this){
+            for (i in 5 until 10) {
                 imgList.add(
                     SlideModel(
                         IMG_BASEURL + it.results.get(i).backdrop_path,
@@ -195,10 +205,9 @@ class MainActivity : AppCompatActivity() {
 
             }
             val imageSlider = findViewById<ImageSlider>(R.id.imageSlider)
-
-
-            Handler().postDelayed({ imageSlider.setImageList(imgList, ScaleTypes.FIT) }, 2000)
+            Handler().postDelayed({imageSlider.setImageList(imgList,ScaleTypes.FIT)},3000)
         }
+
     }
     private fun onClick() {
         binding.tvSeemore.setOnClickListener {

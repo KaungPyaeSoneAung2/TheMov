@@ -158,6 +158,8 @@
             tools:listitem="@layout/item_trailerimage"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:paddingBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             >
 <!--            <ImageButton-->
 <!--                android:id="@+id/ibTrailerImage"-->

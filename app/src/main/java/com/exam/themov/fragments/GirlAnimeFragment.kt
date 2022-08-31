@@ -65,21 +65,21 @@ class GirlAnimeFragment : Fragment() {
         GoNext(currentPage)
 
         detectLastItemOfRv()
-        binding.ivBackPage.visibility = View.GONE
+        binding.ivBackPage.visibility = View.INVISIBLE
         // binding.ivBackPage.visibility=View.VISIBLE
         binding.ivForwardPage.setOnClickListener{
             GoNext(++currentPage)
             binding.ivBackPage.visibility = View.VISIBLE
             Log.d("totalPage", "TotalPage : ${totalPage}")
             if(currentPage >= totalPage){
-                binding.ivForwardPage.visibility = View.GONE
+                binding.ivForwardPage.visibility = View.INVISIBLE
             }
 
         }
         binding.ivBackPage.setOnClickListener{
             GoNext(--currentPage)
             if(currentPage <= 1){
-                binding.ivBackPage.visibility = View.GONE
+                binding.ivBackPage.visibility = View.INVISIBLE
             }
         }
 
@@ -96,7 +96,7 @@ class GirlAnimeFragment : Fragment() {
                     //you have reached to the bottom of your recycler view
                     binding.llPageControl.visibility = View.VISIBLE
                 } else {
-                    binding.llPageControl.visibility = View.GONE
+                    binding.llPageControl.visibility = View.INVISIBLE
                 }
             }
         })

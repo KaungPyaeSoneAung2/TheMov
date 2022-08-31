@@ -15,13 +15,12 @@ class MainViewModel(private val animeRepository: AnimeRepository): ViewModel() {
     init {
 
         viewModelScope.launch {
-            animeRepository.getAnime()
+            animeRepository.dataForSlideShow()
             //animeRepository.getTopRatedAnime()
-            animeRepository.getUpComingAnime()
+            //animeRepository.getUpComingAnime()
             //animeRepository.getNowPlayingAnime()
         }
     }
-
 
 
     val anime : LiveData<AnimeData>
@@ -33,12 +32,18 @@ class MainViewModel(private val animeRepository: AnimeRepository): ViewModel() {
 //    val nowPlayingAnime : LiveData<PopularData>
 //    get()=animeRepository.nowPlaying
 
-    val upComingAnime: LiveData<PopularData>
-    get() = animeRepository.upComing
+    suspend fun getAnime(page: Int):Response<AnimeData>{
+        return animeRepository.getAnime(page)
+    }
 
     suspend fun getTopRatedAnime(page:Int):Response<PopularData> {
         return animeRepository.getTopRatedAnime(page)
     }
+
+    suspend fun getUpComing(page:Int):Response<PopularData> {
+        return animeRepository.getUpComingAnime(page)
+    }
+
     suspend fun getNowPlayingAnie(page:Int):Response<PopularData> {
         return animeRepository.getNowPlayingAnime(page)
     }

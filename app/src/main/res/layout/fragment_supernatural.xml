@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_theme"
     tools:context=".fragments.SupernaturalFragment">
     <TextView
         android:layout_marginTop="60dp"
@@ -19,12 +20,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical"
-        android:layout_marginBottom="7dp"
         tools:listitem="@layout/genre_items" />
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_marginTop="15dp"
         android:id="@+id/llPageControl"
         android:layout_gravity="bottom|center"
