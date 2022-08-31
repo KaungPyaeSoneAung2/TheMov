@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity() {
         var imgList = ArrayList<SlideModel>()
 
         mainViewModel.anime.observe(this){
-            for (i in 5 until 10) {
+            for (i in 9 until 15) {
                 imgList.add(
                     SlideModel(
                         IMG_BASEURL + it.results.get(i).backdrop_path,
