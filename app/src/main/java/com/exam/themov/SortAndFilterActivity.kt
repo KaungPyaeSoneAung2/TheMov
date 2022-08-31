@@ -86,7 +86,6 @@ class SortAndFilterActivity : AppCompatActivity() ,AdapterView.OnItemSelectedLis
     }
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val text:String=p0?.getItemAtPosition(p2).toString()
-        Toast.makeText(this, "$text", Toast.LENGTH_SHORT).show()
         viewModel.setSort(text)
         //intent.putExtra("selectedSpinner",text)
     }
