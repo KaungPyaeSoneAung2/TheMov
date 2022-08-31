@@ -11,7 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -23,6 +25,7 @@ import com.exam.themov.api.Request
 import com.exam.themov.api.RetrofitHelper
 import com.exam.themov.databinding.ActivityMainBinding
 import com.exam.themov.models.Anime.AnimeData
+import com.exam.themov.models.PopularData
 import com.exam.themov.repository.AnimeRepository
 import com.exam.themov.seemore.NowPlayingSeeMoreActivity
 import com.exam.themov.seemore.PopularSeeMoreActivity
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var popularAdapter: PopularAdapter
     private lateinit var  nowPlayingAdapter: NowPlayingAdapter
     private lateinit var animeAdapter: AnimeAdapter
+    var nowPlayingList = MutableLiveData<PopularData>()
+    var topRatedList = MutableLiveData<PopularData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,27 +122,51 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    private fun getTopRatedAnime(){
+//        mainViewModel.topRatedAnime.observe(this){
+//            popularAdapter = PopularAdapter(it.results)
+//            binding.rvTopRated.apply {
+//                setHasFixedSize(true)
+//
+//                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+//                adapter = popularAdapter
+//            }
+//        }
+//    }
     private fun getTopRatedAnime(){
-        mainViewModel.topRatedAnime.observe(this){
-            popularAdapter = PopularAdapter(it.results)
-            binding.rvTopRated.apply {
-                setHasFixedSize(true)
+    lifecycleScope.launch {
+        val genreByPage = mainViewModel.getTopRatedAnime(1)
+        if (genreByPage.body() != null) {
+            topRatedList.postValue(genreByPage.body())
+            topRatedList.observe(this@MainActivity) {
+                popularAdapter = PopularAdapter(it.results)
+                binding.rvTopRated.also {
+                    it.setHasFixedSize(true)
+                    it.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                    it.adapter = popularAdapter
+                }
 
-                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                adapter = popularAdapter
             }
         }
     }
+    }
 
     private fun getNowPlayingAnime(){
-        mainViewModel.nowPlayingAnime.observe(this){
-            nowPlayingAdapter = NowPlayingAdapter(it.results)
-            binding.rvNowPlaying.apply {
-                setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                adapter = nowPlayingAdapter
+        lifecycleScope.launch {
+        val genreByPage = mainViewModel.getNowPlayingAnie(1)
+        if (genreByPage.body() != null) {
+            nowPlayingList.postValue(genreByPage.body())
+            nowPlayingList.observe(this@MainActivity) {
+                nowPlayingAdapter = NowPlayingAdapter(it.results)
+                binding.rvNowPlaying.also {
+                    it.setHasFixedSize(true)
+                    it.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                    it.adapter = nowPlayingAdapter
+                }
+
             }
         }
+    }
     }
 
     private fun getUpcoming(){

@@ -16,9 +16,9 @@ class MainViewModel(private val animeRepository: AnimeRepository): ViewModel() {
 
         viewModelScope.launch {
             animeRepository.getAnime()
-            animeRepository.getTopRatedAnime()
+            //animeRepository.getTopRatedAnime()
             animeRepository.getUpComingAnime()
-            animeRepository.getNowPlayingAnime()
+            //animeRepository.getNowPlayingAnime()
         }
     }
 
@@ -27,14 +27,25 @@ class MainViewModel(private val animeRepository: AnimeRepository): ViewModel() {
     val anime : LiveData<AnimeData>
     get() = animeRepository.anime
 
-    val topRatedAnime: LiveData<PopularData>
-    get() = animeRepository.topRated
+//    val topRatedAnime: LiveData<PopularData>
+//    get() = animeRepository.topRated
 
-    val nowPlayingAnime : LiveData<PopularData>
-    get()=animeRepository.nowPlaying
+//    val nowPlayingAnime : LiveData<PopularData>
+//    get()=animeRepository.nowPlaying
 
     val upComingAnime: LiveData<PopularData>
     get() = animeRepository.upComing
+
+    suspend fun getTopRatedAnime(page:Int):Response<PopularData> {
+        return animeRepository.getTopRatedAnime(page)
+    }
+    suspend fun getNowPlayingAnie(page:Int):Response<PopularData> {
+        return animeRepository.getNowPlayingAnime(page)
+    }
+
+    suspend fun getTrailerForOther(id:String):Response<VideoData>{
+        return animeRepository.getTrailerForOther(id)
+    }
 
     suspend fun  getTrailerById(id:String):Response<VideoData>{
         return animeRepository.getTrailerById(id)

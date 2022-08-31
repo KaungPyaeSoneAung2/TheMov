@@ -9,6 +9,5 @@ class SortViewModel : ViewModel() {
 
     fun setSort(name:String){
         sortValue.postValue(name)
-
     }
 }

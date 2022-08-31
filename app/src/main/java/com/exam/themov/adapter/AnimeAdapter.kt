@@ -39,6 +39,7 @@ class AnimeAdapter(
         holder.bind(animeList[position])
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putIntegerArrayListExtra("genre_id",animeList[position].genre_ids as ArrayList<Int>)
             intent.putExtra("id",animeList[position].id)
             intent.putExtra("movieName",animeList[position].name)
             intent.putExtra("movieBackDrop",animeList[position].backdrop_path)

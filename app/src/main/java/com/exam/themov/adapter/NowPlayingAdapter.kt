@@ -42,6 +42,7 @@ class NowPlayingAdapter(
         holder.bind(popularList[position])
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putExtra("movie_id",popularList[position].id)
             intent.putExtra("movieName",popularList[position].title)
             intent.putExtra("movieBackDrop",popularList[position].backdrop_path)
             intent.putExtra("moviePoster",popularList[position].poster_path)

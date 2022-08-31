@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.exam.themov.DetailActivity
 import com.exam.themov.SortAndFilterActivity
 import com.exam.themov.databinding.GenreItemsBinding
 import com.exam.themov.models.Anime.AnimeResult
@@ -57,7 +58,17 @@ class GenreAdapter(
         }
 
         holder.bind(sortedList[position])
-
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putExtra("id",sortedList[position].id)
+            intent.putExtra("movieName",sortedList[position].name)
+            intent.putExtra("movieBackDrop",sortedList[position].backdrop_path)
+            intent.putExtra("moviePoster",sortedList[position].poster_path)
+            intent.putExtra("Rating",sortedList[position].vote_average)
+            intent.putExtra("Popularity",sortedList[position].popularity)
+            intent.putExtra("Overview",sortedList[position].overview)
+            it.context.startActivity(intent)
+        }
 
 //        val selectedItem = intent.getStringExtra("spinnerSelected").toString()
 //        Log.d("GLGLGL","The result :$selectedItem")

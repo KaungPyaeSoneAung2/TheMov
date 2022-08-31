@@ -38,8 +38,9 @@ class DetailActivity : AppCompatActivity() {
         val animeRepository = AnimeRepository(request)
         mainViewModel = ViewModelProvider(this, ViewModelFactory(animeRepository)).get(MainViewModel::class.java)
 
-        val videoId = intent.getIntExtra("id",0).toString()
-        Log.d("VideoId", "Video: ${videoId}")
+        val videoId = intent.getIntExtra("id",0)
+        val genreIdList = intent.getIntegerArrayListExtra("genre_id")
+        val movieId = intent.getIntExtra("movie_id",0)
 
         var movieName= intent.getStringExtra("movieName").toString()
         var movieBackDrop = intent.getStringExtra("movieBackDrop").toString()
@@ -68,27 +69,47 @@ class DetailActivity : AppCompatActivity() {
         binding.tvDetail.text= movieOverview
 
         binding.ibBackArrow.setOnClickListener {
-            var intent = Intent(this@DetailActivity,MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            onBackPressed()
         }
 
         var videoData = MutableLiveData<VideoData>()
-        mainViewModel.viewModelScope.launch {
+        //For Top-rated,Now playing and popular (movies)
+        if(movieId != 0){
+            mainViewModel.viewModelScope.launch {
 
-            var trailerVideo= mainViewModel.getTrailerById(videoId)
-            videoData.postValue(trailerVideo.body())
-            Log.d("VideoResult", " ${trailerVideo.body()}")
-            videoData.observe(this@DetailActivity){
-                videoAdapter = TrailerAdapter(it.results)
-                binding.rvTrailers.apply {
-                    setHasFixedSize(false)
-                    layoutManager =
-                        LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
-                    adapter = videoAdapter
+                var trailerVideo= mainViewModel.getTrailerForOther(movieId.toString())
+                videoData.postValue(trailerVideo.body())
+                Log.d("VideoResult", " ${trailerVideo.body()!!.results}")
+                videoData.observe(this@DetailActivity){
+                    videoAdapter = TrailerAdapter(it.results)
+                    binding.rvTrailers.apply {
+                        setHasFixedSize(false)
+                        layoutManager =
+                            LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
+                        adapter = videoAdapter
+                    }
                 }
-            }
 
+            }
+        }
+
+        //for popular (tv series)
+        if(videoId != 0){
+            mainViewModel.viewModelScope.launch {
+                var trailerVideo= mainViewModel.getTrailerById(videoId.toString())
+                videoData.postValue(trailerVideo.body())
+                Log.d("VideoResult", " ${trailerVideo.body()!!.results}")
+                videoData.observe(this@DetailActivity){
+                    videoAdapter = TrailerAdapter(it.results)
+                    binding.rvTrailers.apply {
+                        setHasFixedSize(false)
+                        layoutManager =
+                            LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
+                        adapter = videoAdapter
+                    }
+                }
+
+            }
         }
 
     }

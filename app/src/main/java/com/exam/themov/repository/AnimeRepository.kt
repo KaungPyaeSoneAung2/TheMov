@@ -45,6 +45,10 @@ class AnimeRepository(private val request: Request) {
         return request.getTrailerById(id)
     }
 
+    suspend fun getTrailerForOther(id:String):Response<VideoData>{
+        return request.getTrailerForOthers(id)
+    }
+
     suspend fun getSearchResult(s: String): Response<AnimeData> {
         return request.getSearchResult(s)
     }
@@ -60,25 +64,34 @@ class AnimeRepository(private val request: Request) {
     val topRated:LiveData<PopularData>
     get()=topRatedAnime
 
-    suspend fun getTopRatedAnime(){
-        val result = request.getTopRatedAnime()
+//    suspend fun getTopRatedAnime(){
+//        val result = request.getTopRatedAnime()
+//
+//        if (result.body()!=null){
+//            topRatedAnime.postValue(result.body())
+//            Log.d("POPULAR", "getPopular: ${result.body()}")
+//        }
+//    }
 
-        if (result.body()!=null){
-            topRatedAnime.postValue(result.body())
-            Log.d("POPULAR", "getPopular: ${result.body()}")
-        }
+    suspend fun getTopRatedAnime(page:Int):Response<PopularData>{
+        return request.getTopRatedAnime(page)
+
+//        val result = request.getNowPlayingAnime(page)
+//
+//        if (result.body()!=null){
+//            nowPlayingAnime.postValue(result.body())
+//            Log.d("POPULAR", "getPopular: ${result.body()}")
+//        }
     }
+    suspend fun getNowPlayingAnime(page:Int):Response<PopularData>{
+        return request.getNowPlayingAnime(page)
 
-    val nowPlaying:LiveData<PopularData>
-    get()=nowPlayingAnime
-
-    suspend fun getNowPlayingAnime(){
-        val result = request.getNowPlayingAnime()
-
-        if (result.body()!=null){
-            nowPlayingAnime.postValue(result.body())
-            Log.d("POPULAR", "getPopular: ${result.body()}")
-        }
+//        val result = request.getNowPlayingAnime(page)
+//
+//        if (result.body()!=null){
+//            nowPlayingAnime.postValue(result.body())
+//            Log.d("POPULAR", "getPopular: ${result.body()}")
+//        }
     }
 
     val upComing:LiveData<PopularData>
