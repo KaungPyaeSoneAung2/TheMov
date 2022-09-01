@@ -60,6 +60,7 @@ class GenreAdapter(
         holder.bind(sortedList[position])
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putIntegerArrayListExtra("genre_id",sortedList[position].genre_ids as ArrayList<Int>)
             intent.putExtra("id",sortedList[position].id)
             intent.putExtra("movieName",sortedList[position].name)
             intent.putExtra("movieBackDrop",sortedList[position].backdrop_path)

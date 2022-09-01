@@ -42,6 +42,7 @@ class PopularAdapter(
         holder.bind(popularList[position])
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putIntegerArrayListExtra("genre_id",popularList[position].genre_ids as ArrayList<Int>)
             intent.putExtra("movie_id",popularList[position].id)
             intent.putExtra("movieName",popularList[position].title)
             intent.putExtra("movieBackDrop",popularList[position].backdrop_path)

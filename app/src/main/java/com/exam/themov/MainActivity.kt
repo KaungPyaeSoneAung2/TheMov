@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     var upComingList = MutableLiveData<PopularData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -68,48 +69,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         binding.searchView.setOnClickListener {
             Intent(this, SearchActivity::class.java).also { startActivity(it) }
         }
-        //var searchView = findViewById<SearchView>(R.id.searchView)
-//        var searchData = MutableLiveData<AnimeData>()
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(p0: String?): Boolean {
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(p0: String?): Boolean {
-//                mainViewModel.viewModelScope.launch {
-//                    var searchResult = mainViewModel.getSearchResult(p0.toString())
-//                    if (searchResult.body()!= null){
-//                        searchData.postValue(searchResult.body())
-//                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-//                        searchData.observe(this@MainActivity){
-//                            animeAdapter = AnimeAdapter(it.results)
-//                            binding.rvPopular.also {
-//                                it.setHasFixedSize(true)
-//
-//                                it.layoutManager =
-//                                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-//                                it.adapter = animeAdapter
-//                            }
-//                        }
-//                    }
-//                    else{
-//                        Toast.makeText(this@MainActivity, "Can't Search", Toast.LENGTH_SHORT).show()
-//                        Log.d("SearchResult", "onQueryTextChange: ${searchResult.body()}")
-//                    }
-//                }
-//
-//
-//                return true
-//            }
-//
-//
-//        })
-
-
     }
 
     private fun getPopularAnime() {
@@ -134,17 +96,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //    private fun getTopRatedAnime(){
-//        mainViewModel.topRatedAnime.observe(this){
-//            popularAdapter = PopularAdapter(it.results)
-//            binding.rvTopRated.apply {
-//                setHasFixedSize(true)
-//
-//                layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-//                adapter = popularAdapter
-//            }
-//        }
-//    }
     private fun getTopRatedAnime() {
         lifecycleScope.launch {
             val genreByPage = mainViewModel.getTopRatedAnime(1)
@@ -250,6 +201,7 @@ class MainActivity : AppCompatActivity() {
             imageSlider.setItemClickListener(object : ItemClickListener {
                 override fun onItemSelected(position: Int) {
                     val intent=Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putIntegerArrayListExtra("genre_id",resultList[position].genre_ids as ArrayList<Int>)
                     intent.putExtra("id",resultList[position].id)
                     intent.putExtra("movieName",resultList[position].name)
                     intent.putExtra("movieBackDrop",resultList[position].backdrop_path)
