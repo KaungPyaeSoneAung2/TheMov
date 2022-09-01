@@ -46,8 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Kyite tar :))"
-        android:textSize="40sp"
+        android:text="Click search view"
+        android:textSize="35sp"
         android:textColor="@color/white"
         android:fontFamily="sans-serif"/>
     <androidx.recyclerview.widget.RecyclerView
